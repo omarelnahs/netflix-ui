@@ -98,15 +98,12 @@ const Container = styled.div`
         gap: 1rem;
         text-align: center;
         font-size: 2rem;
-        h1 {
-          padding: 0 25rem;
-        }
+        
       }
       .form {
         display: grid;
         grid-template-columns: ${({ showPassword }) =>
           showPassword ? "1fr 1fr" : "2fr 1fr"};
-        width: 60%;
         input {
           color: black;
           border: none;
