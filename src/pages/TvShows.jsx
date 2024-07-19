@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/Navbar.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchMovies, getGenres } from "../store/store.js";
-import Slider from "../components/Slider";
+import Slider from "../components/Slider.jsx";
 import { useEffect } from "react";
 import NotAvailable from "../components/NotAvailable.jsx";
 import SelectGenre from "../components/SelectGenre.jsx";
 
-export default function Movies() {
+export default function TvShows() {
   const [isScrolled, setIsScrolled] = useState(false);
   const genresLoaded = useSelector((state) => state.netflix.genresLoaded);
   const movies = useSelector((state) => state.netflix.movies);
@@ -20,7 +20,7 @@ export default function Movies() {
   }, [dispatch]);
 
   useEffect(() => {
-    if (genresLoaded) dispatch(fetchMovies({ type: "movie" }));
+    if (genresLoaded) dispatch(fetchMovies({ type: "tv" }));
   }, [dispatch, genresLoaded]); // missing dependency
 
   window.onscroll = () => {
@@ -33,7 +33,7 @@ export default function Movies() {
         <Navbar isScrolled={isScrolled} />
       </div>
       <div className="data">
-        <SelectGenre genres={genres} type="movie" />
+        <SelectGenre genres={genres} type="tv" />
         {movies.length ? <Slider movies={movies} /> : <NotAvailable />}
       </div>
     </Container>
